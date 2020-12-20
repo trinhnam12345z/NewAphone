@@ -1,3 +1,7 @@
+using Aphone.BAL;
+using Aphone.BAL.Interface;
+using Aphone.DAL;
+using Aphone.DAL.Interface;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -27,6 +31,8 @@ namespace Aphone.API
         {
             services.AddControllers();
             services.AddSwaggerGen();
+            services.AddScoped<ICategoryService, CategoryService>();
+            services.AddScoped<ICategoryRepository, CategoryRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
