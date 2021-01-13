@@ -1,0 +1,45 @@
+﻿@model Categories
+<form class="card shadow " style="margin-bottom:350px;" method="post" asp-action="Create">
+    <div class="border">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="card-header py-3">
+            <div class="row">
+                <h3 class="col-8 m-0 font-weight-bold text-primary">Create</h3>           
+            </div>
+        </div>
+
+        <div class="row ml-5 card-body">
+            <div class="col-8">
+                <div class="row form-group">
+                    <div class="col-4">
+                        <label asp-for="CategoriesName"></label>
+                    </div>
+                    <div class="col-8">
+                        <input asp-for="CategoriesName" class="form-control " />
+                        <span asp-validation-for="CategoriesName" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="row form-group">
+                    <div class="col-4">
+                        <label asp-for="Description"></label>
+                    </div>
+                    <div class="col-8">
+                        <textarea asp-for="Description" class="form-control"></textarea>
+                        <span asp-validation-for="Description" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="row form-group">
+                    <div class="col-4">
+                        <a asp-action="Index" class="btn btn-success"><i class="fa fa-arrow-left"></i></a>
+                        
+                    </div>
+                    <div class="col-8">
+                        <input type="submit" value="Submit" class="btn btn-primary" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

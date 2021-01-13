@@ -1,0 +1,80 @@
+﻿@model IEnumerable<Categories>
+
+<div class="container-fluid">
+
+    <!-- Page Heading -->
+    <h1 class="h3 mb-2 text-gray-800">Categories</h1>
+
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <div class="row">
+                <h6 class="col-8  m-0 font-weight-bold text-primary m-auto">Tables Categories</h6>
+                <a asp-controller="Category" asp-action="Create" class=" col-4 btn btn-outline-primary"><b>Create new Category</b></a>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Category Name</th>
+                            <th>Description</th>
+                            <th>Options</th>
+                        </tr>
+                    </thead>
+                    <tfoot>
+                        <tr>
+                            <th>Category Name</th>
+                            <th>Description</th>
+                            <th>Options</th>
+                        </tr>
+                    </tfoot>
+                    <tbody>
+                       @foreach (var category in Model)
+                        {
+                    <tr>
+                        <td width="20%">
+                            @category.CategoriesName
+                        </td>
+                        <td width="70%">
+                              @category.Description
+                        </td>
+
+                        <td>
+                            <div>
+                                <a asp-controller="Category" asp-action="Edit" asp-route-Id="@category.Id" class="btn btn-primary"><i class="fas fa-edit"></i></a>
+                                <a asp-controller="Category" asp-action="Delete" asp-route-Id="@category.Id" class="btn btn-danger" data-toggle="modal" data-target="#DeleteModal"><i class="fas fa-trash-alt"></i></a>
+                            </div>
+                        </td>
+                    </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>
+<!--Alert delete -->
+<div class="modal fade" id="DeleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+    <form method="post" asp-action="DeleteCategory">        
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Ready to Delete .</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">Select "delete" if you want to delete.</div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <a class="btn btn-danger" href="login.html">Delete</a>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+

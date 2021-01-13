@@ -30,7 +30,7 @@ namespace Aphone.API.Controllers
         {
             return Ok(await categoryService.CreateCategory(request));
         }
-        [HttpPost]
+        [HttpPut]
         [Route("/api/category/update")]
         public async Task<OkObjectResult> Update(UpdateCategoryRequest request)
         {
